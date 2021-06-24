@@ -1,0 +1,52 @@
+{% extends 'myapp/collectorate_base.html' %}
+{% load static %}
+{% block title %}User Profile{% endblock %}
+{% block background %}{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092">User Profile</font></h2>
+	<div class="container">
+    <form role="form" name="frm" action="{% url 'collectorate_user_details_view' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="fname">Name</label>
+			<input class="form-control" type="text"  id="fname" name="fname" value="{{user_details.fname}}" required="required">
+			<input class="form-control" type="text"  id="lname" name="lname" value="{{user_details.lname}}" required="required">
+		</div>
+
+		<div class="form-group">
+			<label for="dob">DOB</label>
+			<input class="form-control" type="text"  id="dob" name="dob" value="{{user_details.dob}}" required="required">
+		</div>
+	    <div class="form-group">
+            <label>Gender :</label>
+			<input class="form-control" type="text"  id="gender" name="gender" value="{{user_details.gender}}" required="required">
+		</div>
+	    <div class="form-group">
+			<label for="addr1">Address</label>
+			<input class="form-control" type="text"  id="addr1" name="addr1"  value="{{user_details.addr1}}" placeholder="Street" >
+			<input class="form-control" type="text"  id="addr2" name="addr2" value="{{user_details.addr2}}" placeholder="city" >
+			<input class="form-control" type="text"  id="addr3" name="addr3" value="{{user_details.addr3}}" placeholder="state" >
+			<input class="form-control" type="text"  id="pin" name="pin" value="{{user_details.pin}}" placeholder="pin" >
+		</div>
+		<div class="form-group">
+			<label for="contact">Contact</label>
+			<input class="form-control" type="text"  id="contact" name="contact" value="{{user_details.contact}}" placeholder="Enter contact">
+		</div>
+	    <div class="form-group">
+			<label for="email">Email</label>
+			<input class="form-control" type="text"  id="email" name="email" value="{{user_details.email}}" placeholder="Enter email id">
+		</div>
+		<div class="form-group">
+			<label for="id_name">Id Name</label>
+			<input class="form-control" type="text"  id="id_name" value="{{user_details.id_name}}" name="id_name" placeholder="ID Name" required="required">
+		</div>
+		<div class="form-group">
+			<label for="id_no">Id Number</label>
+			<input class="form-control" type="text"  id="id_no" value="{{user_details.id_no}}" name="id_no" placeholder="ID Number" required="required">
+
+    </form>
+		{{msg}}
+	</div>
+</center>
+{% endblock %}

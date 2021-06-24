@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title %}Official Login{% endblock %}
+{% block body %}
+<body>
+    <center>
+    <h1>Official Login</h1>
+    <div class="container">
+    <form role="form" name="frm" method="post" action="{% url 'official_login' %}" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="un">User Name :</label>
+            <input class="form-control" type="text" name="un" id="un" required>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password :</label>
+            <input class="form-control" type="password" name="pwd" id="pwd" required>
+        </div>
+        <button type="submit" class="btn btn-info" id="bt" name="bt">Login</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+
+    </form>
+    </div>
+        {% autoescape off %}{{ msg1 }}{% endautoescape %}
+    </center>
+
+
+</body>
+{% endblock %}

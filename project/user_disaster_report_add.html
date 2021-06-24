@@ -1,0 +1,40 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Disaster Report Add{% endblock %}
+{% block body %}
+<center>
+    <h1>Disaster Report Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'user_disaster_report_add'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="disaster_master_id">Type :</label>
+             <select class="form-control" id="disaster_master_id"  name="disaster_master_id">
+                {% for  d in disaster_list%}
+                <option value="{{d.id}}">{{d.disaster_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+       <div class="form-group">
+            <label for="description">Description :</label>
+            <input class="form-control" type="text" name="description" id="description" value="" required>
+        </div>
+       <div class="form-group">
+            <label for="location_info">Location Info :</label>
+            <input class="form-control" type="url" name="location_info" id="location_info" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="addr">Address :</label>
+            <input class="form-control" type="text" name="addr" id="addr" value="" required>
+        </div>
+       <div class="form-group">
+            <label for="document">Document :</label>
+            <input class="form-control" type="file" name="document" id="document" required>
+        </div>
+       <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'myapp/collectorate_base.html' %}
+{% load static %}
+{% block title %}Job Add{% endblock %}
+{% block body %}
+<center>
+    <h1>Job Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'collectorate_volunteer_job_allot_add'%}" method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="job_description">Description:</label>
+            <Textarea class="form-control"  name="job_description" id="job_description" required></Textarea>
+        </div>
+        <div class="form-group">
+            <label for="contact_name">Contact name :</label>
+            <input class="form-control" type="text" name="contact_name" id="contact_name" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="contact_number">Contact number :</label>
+            <input class="form-control" type="text" name="contact_number" id="contact_number" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="addr">Address:</label>
+            <Textarea class="form-control"  name="addr" id="addr" required></Textarea>
+        </div>
+        <input class="form-control" type="hidden" name="user_id" id="user_id" value="{{user_id}}">
+       <button type="submit"  class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset"  class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

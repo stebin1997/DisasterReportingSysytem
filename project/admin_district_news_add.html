@@ -1,0 +1,32 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}District News Add{% endblock %}
+{% block body %}
+<center>
+    <h1>District News Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'admin_district_news_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="subject">Subject :</label>
+            <input class="form-control" type="text" name="subject" id="subject" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="news">News :</label>
+            <Textarea class="form-control"  name="news" id="news" required></Textarea>
+        </div>
+        <div class="form-group">
+            <label for="district_id">District :</label>
+            <select class="form-control" id="district_id"  name="district_id">
+                {% for  d in district_list%}
+                <option value="{{d.id}}">{{d.district}}</option>
+                {% endfor %}
+            </select>
+        </div>
+       <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

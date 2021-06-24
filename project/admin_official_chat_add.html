@@ -1,0 +1,28 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Send Message{% endblock %}
+{% block body %}
+<center>
+    <h1>Send Message</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'admin_official_chat_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="msg">Message :</label>
+            <input class="form-control" type="text" name="msg" id="msg" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="to_user_id">Official :</label>
+            <select class="form-control" id="to_user_id"  name="to_user_id">
+                {% for cl in official_list%}
+                <option value="{{cl.id}}">{{cl.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+         <button type="submit" class="btn btn-info" id="bt" name="bt">Send</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <b>{{msg}}</b>
+</center>
+{% endblock %}

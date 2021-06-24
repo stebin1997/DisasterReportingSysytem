@@ -1,0 +1,20 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Date Search{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092">Date Search</font></h2>
+    <div class="container">
+    <form name="frm"  role="form" action="{% url 'admin_disaster_search' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="query">Date</label>
+                <input class="form-control" type="date" name="query"  id="query">
+            </div>
+        <button type="submit" class="btn btn-info" id="bt" name="bt">Search</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+        {{msg}}
+        </form>
+    </div>
+</center>
+{% endblock %}

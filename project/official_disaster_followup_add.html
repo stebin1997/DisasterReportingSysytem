@@ -1,0 +1,22 @@
+{% extends 'myapp/official_base.html' %}
+{% load static %}
+{% block title %}Disaster Type Add{% endblock %}
+{% block body %}
+<center>
+    <h1>Disaster Type Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'official_disaster_followup_add'%}" method="post">
+        {% csrf_token %}
+
+       <div class="form-group">
+            <label for="remark">Disaster Remarks :</label>
+           <textarea class="form-control" type="text" name="remark" id="remark" required></textarea>
+        </div>
+       <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+        <input type="hidden" name="disaster_report_id" value="{{disaster_report_id}}">
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

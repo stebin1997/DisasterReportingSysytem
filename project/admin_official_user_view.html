@@ -1,0 +1,56 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Official User Details{% endblock %}
+{% block body %}
+<center>
+    <h1>Official User Details</h1>
+    <div class="container">
+    <form role="form" name="frm" action="{% url 'admin_official_user_view'%}" method="post">
+        {% csrf_token %}
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Role</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>District Name</th>
+                <th>Login Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            {% for f in official_list %}
+            <tbody>
+            <tr>
+                <td>{{ f.id }}</td>
+                <td>{{ f.name }}</td>
+                <td>{{ f.name_details }}</td>
+                <td>{{ f.role }}</td>
+                <td>{{ f.contact }}</td>
+                <td>{{ f.email }}</td>
+                {% for k,value in district_list.items %}
+                    {% if k == f.district_id %}
+					    <td>{{ value }}</td>
+				    {% endif %}
+			    {% endfor %}
+                {% for k,value in user_list.items %}
+				    {% if k == f.user_id %}
+					    <td>{{ value }}</td>
+				    {% endif %}
+			    {% endfor %}
+                <td>
+                    <a href="../admin_official_user_delete?id={{ f.id }}">Delete</a>
+                </td>
+
+            </tr>
+            <tbody>
+            {% endfor %}
+        </table>
+         <a href="{% url 'admin_official_user_add' %}">Add Official User</a></h1>
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

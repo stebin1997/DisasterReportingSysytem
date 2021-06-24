@@ -1,0 +1,24 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Disaster Type Add{% endblock %}
+{% block body %}
+<center>
+    <h1>Disaster Type Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'admin_disaster_master_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="disaster_name">Disaster Name :</label>
+            <input class="form-control" type="text" name="disaster_name" id="disaster_name" value="" required>
+        </div>
+       <div class="form-group">
+            <label for="disaster_descp">Disaster Description :</label>
+           <textarea class="form-control" type="text" name="disaster_descp" id="disaster_descp" required></textarea>
+        </div>
+       <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

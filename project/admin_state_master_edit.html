@@ -1,0 +1,21 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}State Details Update{% endblock %}
+{% block body %}
+<center>
+    <h1>State Details Edit</h1>
+    <div class="container">
+     <form role="form" name="frm" action="{% url 'admin_state_master_edit'%}" method="post">
+        {% csrf_token %}
+         <div class="form-group">
+            <label for="state_name">State Name :</label>
+            <input class="form-control" name="state_name" id="state_name" type="text"  value="{{state_name}}" required><br><br>
+         </div>
+         <button type="submit" class="btn btn-info" id="bt" name="bt">Update</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+         <input type="hidden" name="s_id" value="{{s_id}}">
+    </form>
+    </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

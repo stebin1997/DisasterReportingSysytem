@@ -1,0 +1,22 @@
+{% extends 'myapp/volunteer_base.html' %}
+{% load static %}
+{% block title %}Job Followup Add{% endblock %}
+{% block body %}
+<center>
+    <h1>Job Followup Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'volunteer_job_followup_add'%}" method="post">
+        {% csrf_token %}
+
+       <div class="form-group">
+            <label for="remark">Job Remarks :</label>
+           <textarea class="form-control" type="text" name="remark" id="remark" required></textarea>
+        </div>
+       <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+        <input type="hidden" name="job_id" value="{{job_id}}">
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

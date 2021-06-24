@@ -1,0 +1,52 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Official User Add{% endblock %}
+{% block body %}
+<center>
+    <h1>Official User Add</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'admin_official_user_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name :</label>
+            <input class="form-control" type="text" name="name" id="name" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="name_details">Description :</label>
+            <input class="form-control" type="text" name="name_details" id="name_details" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="role">Role :</label>
+            <input class="form-control" type="text" name="role" id="role" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact :</label>
+            <input class="form-control" type="text" name="contact" id="contact" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input class="form-control" type="email" name="email" id="email" value=""pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter email id" oninput="if (typeof this.reportValidity === 'function') {this.reportValidity();}"   required>
+        </div>
+        <div class="form-group">
+            <label for="uname">Login Name :</label>
+            <input class="form-control" type="text" name="uname" id="uname" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password :</label>
+            <input class="form-control" type="password" name="password" id="password" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="district_id">District :</label>
+            <select class="form-control" id="district_id"  name="district_id">
+                {% for  d in district_list%}
+                <option value="{{d.id}}">{{d.district}}</option>
+                {% endfor %}
+            </select>
+        </div>
+       <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <h3>{{msg}}</h3>
+</center>
+{% endblock %}

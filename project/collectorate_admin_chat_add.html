@@ -1,0 +1,20 @@
+{% extends 'myapp/collectorate_base.html' %}
+{% load static %}
+{% block title %}Send Message{% endblock %}
+{% block body %}
+<center>
+    <h1>Send Message</h1>
+     <div class="container">
+    <form role="form" name="frm" action="{% url 'collectorate_admin_chat_add'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="msg">Message :</label>
+            <input class="form-control" type="text" name="msg" id="msg" value="" required>
+        </div>
+        <button type="submit" class="btn btn-info" id="bt" name="bt">Send</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Clear</button>
+    </form>
+     </div>
+    <b>{{msg}}</b>
+</center>
+{% endblock %}
